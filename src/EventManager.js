@@ -375,12 +375,6 @@ function EventManager(options, _sources) {
 		}else{
 			event.className = [];
 		}
-
-    // set proper event title from event summary if defined
-    if(event.title === undefined){
-      event.title = event.summary ? event.summary : 'New event';
-    }
-
     event.title = event.title || event.summary;
 		// TODO: if there is no start date, return false to indicate an invalid event
 	}
