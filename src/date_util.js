@@ -139,8 +139,14 @@ function setYMD(date, y, m, d) {
 
 
 function parseDate(s, ignoreTimezone) { // ignoreTimezone defaults to true
-	if (typeof s == 'object') { // already a Date object
-		return s;
+	if (s instanceof Date)  { // already a Date object
+ 		return s;
+ 	}
+	if (typeof s == 'object') { // object but not a date
+		if (s.date) 
+			return parseDate(s.date, ignoreTimezone);
+		if (s.dateTime)
+			return parseDate(s.dateTime, ignoreTimezone);
 	}
 	if (typeof s == 'number') { // a UNIX timestamp
 		return new Date(s * 1000);
