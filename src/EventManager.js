@@ -344,6 +344,21 @@ function EventManager(options, _sources) {
 			}
 			delete event.date;
 		}
+    if(event.start && event.start.date){
+        event.start = $.fullCalendar.parseDate(event.start.date);
+    }
+
+    if(event.start && event.start.dateTime){
+        event.start = $.fullCalendar.parseDate(event.start.dateTime);
+    }
+
+    if(event.end && event.end.date){
+        event.end = $.fullCalendar.parseDate(event.end.date);
+    }
+
+    if(event.end && event.end.dateTime){
+        event.end = $.fullCalendar.parseDate(event.end.dateTime);
+    }
 		event._start = cloneDate(event.start = parseDate(event.start, ignoreTimezone));
 		event.end = parseDate(event.end, ignoreTimezone);
 		if (event.end && event.end <= event.start) {
@@ -366,6 +381,7 @@ function EventManager(options, _sources) {
       event.title = event.summary ? event.summary : 'New event';
     }
 
+    event.title = event.title || event.summary;
 		// TODO: if there is no start date, return false to indicate an invalid event
 	}
 	

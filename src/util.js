@@ -254,14 +254,13 @@ function smartProperty(obj, name) { // get a camel-cased/namespaced property of 
 
 
 function htmlEscape(s) {
-	if (typeof s == 'string')
-		return s.replace(/&/g, '&amp;')
-			.replace(/</g, '&lt;')
-			.replace(/>/g, '&gt;')
-			.replace(/'/g, '&#039;')
-			.replace(/"/g, '&quot;')
-			.replace(/\n/g, '<br />');
-	return '';
+	s = s || '';
+	return s.replace(/&/g, '&amp;')
+		.replace(/</g, '&lt;')
+		.replace(/>/g, '&gt;')
+		.replace(/'/g, '&#039;')
+		.replace(/"/g, '&quot;')
+		.replace(/\n/g, '<br />');
 }
 
 
